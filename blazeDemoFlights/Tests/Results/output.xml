@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20190104 14:59:34.278" generator="Robot 3.0.4 (Python 2.7.14 on win32)">
+<suite source="C:\Users\ChMasella\Desktop\automation-projects\blazeDemoFlights\Tests\blazeDemoFlights.robot" id="s1" name="blazeDemoFlights">
+<kw type="setup" name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20190104 14:59:34.582" level="INFO">Opening browser 'ff' to base url 'http://blazedemo.com/'.</msg>
+<status status="PASS" endtime="20190104 14:59:42.297" starttime="20190104 14:59:34.581"></status>
+</kw>
+<test id="s1-t1" name="The user can search for flight">
+<kw name="Select Departure City" library="blazeDemoFlightsKeywords">
+<arguments>
+<arg>Paris</arg>
+</arguments>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<arguments>
+<arg>xpath://select[@name='fromPort']</arg>
+<arg>${departure_city}</arg>
+</arguments>
+<msg timestamp="20190104 14:59:42.298" level="INFO">Selecting options from selection list 'xpath://select[@name='fromPort']' by value Paris.</msg>
+<status status="PASS" endtime="20190104 14:59:42.337" starttime="20190104 14:59:42.298"></status>
+</kw>
+<status status="PASS" endtime="20190104 14:59:42.337" starttime="20190104 14:59:42.298"></status>
+</kw>
+<kw name="Select Destination City" library="blazeDemoFlightsKeywords">
+<arguments>
+<arg>London</arg>
+</arguments>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<arguments>
+<arg>xpath://select[@name='toPort']</arg>
+<arg>${destination_city}</arg>
+</arguments>
+<msg timestamp="20190104 14:59:42.338" level="INFO">Selecting options from selection list 'xpath://select[@name='toPort']' by value London.</msg>
+<status status="PASS" endtime="20190104 14:59:42.582" starttime="20190104 14:59:42.338"></status>
+</kw>
+<status status="PASS" endtime="20190104 14:59:42.582" starttime="20190104 14:59:42.338"></status>
+</kw>
+<kw name="Search For Flights" library="blazeDemoFlightsKeywords">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>css:input[type='submit']</arg>
+</arguments>
+<msg timestamp="20190104 14:59:42.583" level="INFO">Clicking button 'css:input[type='submit']'.</msg>
+<status status="PASS" endtime="20190104 14:59:42.878" starttime="20190104 14:59:42.583"></status>
+</kw>
+<status status="PASS" endtime="20190104 14:59:42.878" starttime="20190104 14:59:42.583"></status>
+</kw>
+<kw name="There are available Flights" library="blazeDemoFlightsKeywords">
+<kw name="Get WebElements" library="SeleniumLibrary">
+<doc>Returns list of WebElement objects matching the ``locator``.</doc>
+<arguments>
+<arg>css:table[class='table']&gt;tbody tr</arg>
+</arguments>
+<assign>
+<var>@{flights}</var>
+</assign>
+<msg timestamp="20190104 14:59:42.888" level="INFO">@{flights} = [ &lt;selenium.webdriver.firefox.webelement.FirefoxWebElement (session="facca625-bf33-4246-a7ab-c6ce1128de36", element="b4947d04-3c44-4979-98eb-acf91e5bf6b2")&gt; | &lt;selenium.webdriver.firefox.webelement.Fi...</msg>
+<status status="PASS" endtime="20190104 14:59:42.888" starttime="20190104 14:59:42.879"></status>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${flights}</arg>
+</arguments>
+<msg timestamp="20190104 14:59:42.888" level="INFO">Length is 5</msg>
+<status status="PASS" endtime="20190104 14:59:42.888" starttime="20190104 14:59:42.888"></status>
+</kw>
+<status status="PASS" endtime="20190104 14:59:42.888" starttime="20190104 14:59:42.878"></status>
+</kw>
+<tags>
+<tag>search_flights</tag>
+</tags>
+<status status="PASS" endtime="20190104 14:59:42.889" critical="yes" starttime="20190104 14:59:42.297"></status>
+</test>
+<kw type="teardown" name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" endtime="20190104 14:59:43.616" starttime="20190104 14:59:42.892"></status>
+</kw>
+<doc>To run test case: python -m robot -d Results blazeDemoFlights.robot . N.B Must be in the "Tests" directory to run above command. This is a documentation - it can only be used once.</doc>
+<status status="PASS" endtime="20190104 14:59:43.616" starttime="20190104 14:59:34.282"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">search_flights</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="blazeDemoFlights" pass="1">blazeDemoFlights</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

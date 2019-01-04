@@ -1,0 +1,4 @@
+#variables to be imported to blazeDemoFlights.robot
+
+URL:  http://blazedemo.com/
+Browser:  ff
